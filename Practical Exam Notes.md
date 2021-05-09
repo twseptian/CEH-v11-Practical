@@ -93,8 +93,8 @@
   - cd Desktop
   - mkdir Send
   - cd Send
-  - echo &quot;Secret&quot;\&gt;message.txt
-  - Place-\&gt;Network
+  - echo &quot;Secret&quot;->message.txt
+  - Place->Network
   - Ctrl+L
   - **smb://[IP]**
   - Account &amp; Password
@@ -105,7 +105,7 @@
   - cd Desktop
   - mkdir Receive
   - cd Receive
-  - File-\&gt;Ctrl+L
+  - File->Ctrl+L
   - smb://[IP]
   - copy and paste covert\_tcp.c
   - cc -o covert\_tcp covert\_tcp.c
@@ -119,8 +119,8 @@
 
 - Use Winrtgen to generate a rainbow table
 - Launch RainbowCrack
-- File-\&gt;Load NTLM Hashes from PWDUMP File
-- Rainbow Table-\&gt;Search Rainbow Table
+- File->Load NTLM Hashes from PWDUMP File
+- Rainbow Table->Search Rainbow Table
 - Use the generated rainbow table
 - RainbowCrack automatically starts to crack the hashes
 
