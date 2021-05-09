@@ -227,7 +227,7 @@
 
 **Lab2-Task5: Enumerate and Hack a Web Application using WPScan and Metasploit**
 
-- **wpscan -–api-token hWt9qrMZFm7MKprTWcjdasowoQZ7yMccyPg8lsb8ads –-url**  **http://10.10.10.16:8080/CEH**  **--plugins-detection aggressive --enumerate u**
+- **wpscan --api-token hWt9qrMZFm7MKprTWcjdasowoQZ7yMccyPg8lsb8ads --url**  **http://10.10.10.16:8080/CEH**  **--plugins-detection aggressive --enumerate u**
   - **--enumerate u: Specify the enumeration of users**
   - **API Token: Register at** [**https://wpscan.com/register**](https://wpscan.com/register)
   - **Mine: hWt9qrMZFm7MKprTWcjdasowoQZ7yMccyPg8lsb8ads**
@@ -313,7 +313,7 @@
   - Module 15: Lab1-Task2
 - **WPScan**
   - Module 14: Lab2-Task5
-  - wpscan –url [URL]
+  - wpscan –-url http://10.10.10.10 -t 50 -U admin -P rockyou.txt
 - **Nikto**
   - [https://zhuanlan.zhihu.com/p/124246499](https://zhuanlan.zhihu.com/p/124246499%20)
 - **John**
