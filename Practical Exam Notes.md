@@ -363,8 +363,7 @@
   - smbclient -L [IP]
   - smbclient \\ip\\sharename
   - nmap -p 445 -sV –script smb-enum-services [IP]
-- **Run Nmap at the beginning (Not verified)**
-  - Nmap -sV -sC -oA nmap 10.10.10.x
-  - nmap -sC -sV -v -oN nmap.txt [IP]
-  - masscan -e tun0 -p1-65535 -rate=1000 [IP]
-  - sudo nmap -sU -sV -A -T4 -v -oN udp.txt [IP]
+- **Run Nmap at the beginning **
+  - nmap -sn -PR  192.168.1.1/24 -oN ip.txt
+  - nmap -A -T4 -vv -iL ip.txt -oN nmap.txt 
+  - nmap -sU -sV -A -T4 -v -oN udp.txt 
